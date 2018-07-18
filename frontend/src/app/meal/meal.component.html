@@ -1,0 +1,28 @@
+<div class="wrapper-full">
+  <mat-card>
+    <h4>Manipulate your meal</h4>
+    <div class="row">
+      <mat-form-field>
+        <input matInput placeholder="Enter your meal" value="{{meal.text}}" [(ngModel)]="meal.text" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="pickerLunch" [(ngModel)]="meal.date" placeholder="Choose date">
+        <mat-datepicker-toggle matSuffix [for]="pickerLunch"></mat-datepicker-toggle>
+        <mat-datepicker #pickerLunch></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #endInput matInput [(ngModel)]="meal.time" type="number" min="0" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #endInput matInput placeholder="Number of calories" [(ngModel)]="meal.calories" type="number" min="0" max="23" >
+      </mat-form-field>
+    </div>
+    <button (click)="onEditMeal()" mat-raised-button>Save</button>
+    <button (click)="onCancel()" style="margin-left: 20px;" mat-raised-button>Cancel</button>
+
+
+  </mat-card>
+
+  <br>
+  <br>
+</div>

@@ -1,0 +1,44 @@
+<div class="wrapper-full">
+<div class="container">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <div class="example-container">
+      <br>
+
+      <p>Please enter your credentials</p>
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [(ngModel)]="password" [type]="'password'">
+      </mat-form-field>
+      
+
+      <button mat-button (click)="login()">Login</button>
+    </div>
+  </mat-card>
+
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <mat-card>
+    <mat-card-title>Create Account</mat-card-title>
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="newName">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="newEmail">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #endInput matInput placeholder="Calories goal per day" [(ngModel)]="newCalories" type="number" min="0" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [(ngModel)]="newPassword" [type]="'password'">
+      </mat-form-field>
+      <button mat-button (click)="signin()">Sign In</button>
+    </div>
+  </mat-card>
+</div>
+</div>

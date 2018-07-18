@@ -1,0 +1,24 @@
+<div class="wrapper-full">
+  <mat-card>
+    <h4>Update your info</h4>
+    <div class="row">
+      <mat-form-field>
+        <input matInput value="{{user.name}}" [(ngModel)]="user.name" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput value="{{user.email}}" [(ngModel)]="user.email" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #endInput matInput  [(ngModel)]="user.caloriesPerDay" type="number" min="0" >
+      </mat-form-field>
+
+    </div>
+    <button (click)="onEditUser()" mat-raised-button>Save</button>
+    <button (click)="onCancel()" style="margin-left: 20px;" mat-raised-button>Cancel</button>
+
+
+  </mat-card>
+
+  <br>
+  <br>
+</div>

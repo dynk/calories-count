@@ -1,0 +1,15 @@
+.text-header{
+  width: 40%;
+  text-align: center;
+}
+.number-header{
+  width: 20%;
+  text-align: center;
+}
+.table-item{
+  display: flex;
+  justify-content: center;
+}
+.table-body{
+  width: 80%;
+}

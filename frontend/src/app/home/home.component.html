@@ -1,0 +1,92 @@
+<div class="wrapper-full">
+  <mat-card>
+    <h4>Welcome {{user.name}}!</h4>
+    <p>Your calories goal per day is {{user.caloriesPerDay}}</p>
+    <br>
+    <button (click)="onEditUser()" mat-raised-button>Edit info</button>
+
+  </mat-card>
+  <mat-card>
+    <h4>Manipulate your meals</h4>
+    <p>Add a meal</p>
+    <div class="row">
+      <mat-form-field>
+        <input matInput placeholder="Enter your meal" [(ngModel)]="newLunch.text" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="pickerLunch" [(ngModel)]="newLunch.date" placeholder="Choose date">
+        <mat-datepicker-toggle matSuffix [for]="pickerLunch"></mat-datepicker-toggle>
+        <mat-datepicker #pickerLunch></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #endInput matInput placeholder="Time" [(ngModel)]="newLunch.time" type="number" min="0" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input #endInput matInput placeholder="Number of calories" [(ngModel)]="newLunch.calories" type="number" min="0" max="23" >
+      </mat-form-field>
+    </div>
+    <button (click)="onAddMeal()" mat-raised-button>Add</button>
+    <br>
+    <hr>
+    <p>Filter your meals</p>
+    <br>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <input matInput [max]="endDate" [matDatepicker]="picker" [(ngModel)]="startDate" placeholder="Choose start date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input  matInput [min]="startDate" [matDatepicker]="pickerEnd" [(ngModel)]="endDate" placeholder="Choose end date">
+          <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker #pickerEnd></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+          <input #startInput matInput placeholder="Start time" (ngModelChange)="timeValidate(startInput)"  [(ngModel)]="startTime" type="number" min="0" max="23">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input #endInput matInput placeholder="End time" (ngModelChange)="timeValidate(endInput)" [(ngModel)]="endTime" type="number" min="0" max="23">
+      </mat-form-field>
+    </div>
+
+    <button (click)="onFilter()" mat-raised-button>Filter</button>
+
+  </mat-card>
+  <br>
+  <h4>Your meals:</h4>
+  <br>
+  <mat-accordion *ngFor="let date of mealDates">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header [ngStyle]="{'background-color': (user.caloriesPerDay > mealsGroupedByDate[date].totalCalories) ? 'green' : 'red'}">
+        <mat-panel-title>
+          {{date | date}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{mealsGroupedByDate[date].totalCalories}} Calories
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <table class="table-body">
+        <tr>
+          <th class="text-header">Text</th>
+          <th class="number-header">Calories (kcal)</th>
+          <th class="number-header">Time (h)</th>
+          <th></th>
+          <th></th>
+        </tr>
+
+        <tr *ngFor="let meal of mealsGroupedByDate[date].meals">
+          <td class="text-header">{{meal.text}}</td>
+          <td class="number-header">{{meal.calories}}</td>
+          <td class="number-header">{{meal.time}}</td>
+          <td ><button mat-button (click)="onEditMeal(meal._id)" >Edit</button></td>
+          <td ><button mat-button style="background-color: red" (click)="onDeleteMeal(meal._id)" >Delete</button></td>
+        </tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <br>
+  <br>
+</div>

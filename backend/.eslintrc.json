@@ -1,0 +1,37 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "jest": true,
+        "jest/globals": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:jest/recommended"
+    ],
+    "rules": {
+        "prefer-template": "warn",
+        "no-useless-concat":"error",
+        "no-empty":"warn",
+        "prefer-const": "warn",
+        "jest/no-disabled-tests": 0,
+        "no-trailing-spaces": "error",
+        "indent": [ "error", 2 ],
+        "linebreak-style": [ "error", "unix" ],
+        "quotes": [ "error", "single" ],
+        "semi": [ "error", "always" ]
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "plugins": [
+        "jest"
+    ],
+    "globals": {
+        "fail": true,
+        "__stack": true,
+        "__function": true,
+        "__line": true,
+        "__caller": true
+    }
+}

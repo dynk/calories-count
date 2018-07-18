@@ -1,0 +1,22 @@
+version: "2"
+services:
+  front:
+    container_name: toptal-admin
+    build: ./frontend
+    ports:
+      - "80:80"
+  app:
+    container_name: meal
+    build: ./backend
+    ports:
+      - "3020:3020"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo-meal
+    image: mongo:3.5
+    command: mongod --port 27017 --bind_ip_all
+    volumes:
+      - ./backend/data:/data/db
+    ports:
+      - "27017:27017"
